@@ -9,6 +9,6 @@ app.listen(3000, function(){
 // root path, will be using newer ES6 syntax after this.
 app.get('/', function(req, res) {
     // res.sendFile('root path works');
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/index.html')
 });
 
