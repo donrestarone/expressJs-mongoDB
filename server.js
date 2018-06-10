@@ -22,6 +22,8 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 // invoke ejs/nunjucks as the view engine for templates
 app.set('view engine', 'ejs');
+// make public folder go into the asset pipeline and be sent client-side
+app.use(express.static('public'));
 
 // root path, will be using newer ES6 syntax after this.
 app.get('/', function(req, res) {
