@@ -27,7 +27,7 @@ app.set('view engine', 'ejs');
 app.get('/', function(req, res) {
     // get the collection of 'todos' from mongolab, disregard the irrelevant stuff and return the todos in an array
     var cursor = db.collection('todos').find().toArray(function(err, result){
-        console.log(result);
+        // render the template in the views folder, pass result from the array function to the view to be rendered as todos
         res.render('index.ejs', {todos: result});
     });
 
