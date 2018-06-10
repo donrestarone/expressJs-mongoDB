@@ -11,10 +11,10 @@
 <body>
     <H1>I'am a humble to-do app</H1>
     <ul class="todos">
-        <% for(var i=o; i<todos.length; i++) {%>
+        <% for(var i=0; i<todos.length; i++) { %>
             <li class="todo">
-                <span><%= todos[i].description</span>
-                <span><%= todos[i].duetime</span>
+                <span><%= todos[i].description %></span>
+                <span><%= todos[i].duetime %></span>
             </li>
         <% } %>
     </ul>
