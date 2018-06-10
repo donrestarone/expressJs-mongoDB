@@ -9,7 +9,11 @@
     <script src="main.js"></script>
 </head>
 <body>
-    <H1>Root works!!</H1>
-    <p>This is how to serve an html file in express</p>
+    <H1>I'am a humble to-do app</H1>
+    <form action="/todos" method="POST">
+        <input type="text" placeholder="description" name="description">
+        <input type="datetime-local" placeholder="date/time" name="duetime">
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>
