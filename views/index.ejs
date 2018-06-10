@@ -15,16 +15,20 @@
             <% var date = (todos[i].duetime).split('T')[0] %>
             <% var time = (todos[i].duetime).split('T')[1] %>
             <li class="todo">
-                <span><%= todos[i].description %></span>
-                <span><%= time %></span>
-                <span><%= date %></span>
+                <ul class="todo">
+                    <li><%= todos[i].description %></li>
+                    <li>Time: <%= time %></li>
+                    <li>Date: <%= date %></li>
+                    <br>
+                </ul>
             </li>
         <% } %>
     </ul>
     <form action="/todos" method="POST">
-        <input type="text" placeholder="description" name="description">
+        <textarea rows = "5" cols = "50" name = "description"></textarea>
         <input type="datetime-local" placeholder="date/time" name="duetime">
         <button type="submit">Submit</button>
     </form>
+
 </body>
 </html>
