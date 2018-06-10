@@ -1,12 +1,12 @@
 // get express + bodyparser
 const express = require('express');
 const bodyParser = require('body-parser');
-// connect to mongoDB
+// connect to mongoDB, authenticate, and create a db object
 var db
-var Mongousr = process.env.TODO_MONGO_USR;
-var Mongopass = process.env.TODO_MONGO_PASS;
+var MongoUsr = process.env.TODO_MONGO_USR;
+var MongoPass = process.env.TODO_MONGO_PASS;
 const MongoClient = require('mongodb').MongoClient;
-MongoClient.connect(`mongodb://${Mongousr}:${Mongopass}@ds153980.mlab.com:53980/to-dos`, (err, database) => {
+MongoClient.connect(`mongodb://${MongoUsr}:${MongoPass}@ds153980.mlab.com:53980/to-dos`, (err, database) => {
     if (err) return console.log(err);
     db = database.db('to-dos');
     app.listen(3000, function(){
@@ -27,6 +27,11 @@ app.get('/', function(req, res) {
 });
 
 app.post('/todos', (req, res) => {
-    console.log(req.body);
+    db.collection('todos').save(req.body, (err, result) => {
+        if (err) return console.log(err);
+        console.log('saved to database');
+        // when done redirect to root path
+        res.redirect('/');
+    });
 });
 
