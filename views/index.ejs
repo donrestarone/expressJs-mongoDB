@@ -13,15 +13,19 @@
     <H1>I'am a humble to-do app</H1>
     <ul class="todos">
         <% for(var i=0; i<todos.length; i++) { %>
-            <% var date = (todos[i].duetime).split('T')[0] %>
-            <% var time = (todos[i].duetime).split('T')[1] %>
+            <% if (todos[i].duetime != null) { %>
+                <% var date = (todos[i].duetime).split('T')[0] %>
+                <% var time = (todos[i].duetime).split('T')[1] %>
+            <% } %>
             <li class="todo">
                 <ul class="todo">
                     <li><%= todos[i].description %></li>
-                    <li>Time: <%= time %></li>
-                    <li>Date: <%= date %></li>
-                        <button class="update">update</button>
-                        <button class="delete">delete</button>
+                    <% if (date != null && time != null) { %>
+                        <li>Time: <%= time %></li>
+                        <li>Date: <%= date %></li>
+                    <% } %>
+                    <button class="update">edit</button>
+                    <button class="delete">delete</button>
                     <br>
                     <br>
                 </ul>
@@ -30,8 +34,8 @@
     </ul>
     <form action="/todos" method="POST">
         <textarea rows = "5" cols = "50" name = "description"></textarea>
-        <input type="datetime-local" placeholder="date/time" name="duetime">
-        <button type="submit">Submit</button>
+        <input type="datetime-local" placeholder="date/time" name="duetime" id="duetime">
+        <button type="submit" id="submitButton">Submit</button>
     </form>
 
 </body>

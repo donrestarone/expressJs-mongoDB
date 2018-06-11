@@ -20,6 +20,8 @@ MongoClient.connect(`mongodb://${MongoUsr}:${MongoPass}@ds153980.mlab.com:53980/
 const app = express();
 // invoke body parser for the app. here urlencoded method will enable you to access body parser date in the body property of the request object
 app.use(bodyParser.urlencoded({extended: true}));
+// make server read json
+app.use(bodyParser.json());
 // invoke ejs/nunjucks as the view engine for templates
 app.set('view engine', 'ejs');
 // make public folder go into the asset pipeline and be sent client-side
@@ -45,5 +47,28 @@ app.post('/todos', (req, res) => {
         // when done redirect to root path
         res.redirect('/');
     });
+});
+
+app.put('/todos', (req, res) => {
+    var description = req.body.description;
+    var newDescription = req.body.newDescription
+    console.log(req.body.description)
+    console.log()
+    console.log('updated db');
+    db.collection('todos').findOneAndUpdate({description: description}, {
+        $set: {
+            description: newDescription,
+            duetime: req.body.duetime
+        }
+    }, {
+            upsert: false
+        }, (err, result) => {
+            if (err) return res.send(err);
+            res.send(result);
+    });
+    // have to override the post method on the form by deleting the duplicate record created.
+    // need to figure out how to add a hidden field to the front end and workaround _method
+    db.collection('todos').findOneAndDelete({description: newDescription})
+
 });
 
