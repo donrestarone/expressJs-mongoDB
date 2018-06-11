@@ -3,14 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
     
     <script src="main.js"></script>
 </head>
-<body>
-    <H1>I'am a humble to-do app</H1>
+<body class="container">
+    <h1 class="display-3 text-center">I'am a humble to-do app</h1>
+    <br>
     <ul class="todos">
         <% for(var i=0; i<todos.length; i++) { %>
             <% if (todos[i].duetime != null) { %>
@@ -33,9 +36,13 @@
         <% } %>
     </ul>
     <form action="/todos" method="POST">
-        <textarea rows = "5" cols = "50" name = "description"></textarea>
-        <input type="datetime-local" placeholder="date/time" name="duetime" id="duetime">
-        <button type="submit" id="submitButton">Submit</button>
+        <div>
+            <textarea rows = "5" cols = "50" name = "description" class="form-control"></textarea>
+            <br>
+            <input type="datetime-local" placeholder="date/time" name="duetime" id="duetime" class="form-control">
+            <br>
+            <button type="submit" id="submitButton" class="btn btn-light">Submit</button>
+        </div>
     </form>
 
 </body>

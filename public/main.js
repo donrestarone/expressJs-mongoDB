@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function(){
     }
     
     submitButton.addEventListener('click', function(e){
-        if (submitButton.className === 'update') {
+        if (submitButton.className === 'update' || submitButton.innerText === 'update') {
             e.preventDefault;
             
             console.log('updateing');
