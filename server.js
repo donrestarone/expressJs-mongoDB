@@ -69,7 +69,7 @@ app.put('/todos', (req, res) => {
     // have to override the post method on the form by deleting the duplicate record created.
     // need to figure out how to add a hidden field to the front end and workaround _method
     db.collection('todos').findOneAndDelete({description: newDescription});
-    res.redirect('/');
+
 });
 
 app.delete('/todos', (req, res) => {
