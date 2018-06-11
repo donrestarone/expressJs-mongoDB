@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function(){
             }).then(data => {
                 console.log(data)
             });
-            
+            location.reload();
             
         }   
     });
