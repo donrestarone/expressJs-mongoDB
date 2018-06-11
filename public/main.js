@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(){
     var textField = document.querySelector('textarea');
     var dueTime = document.getElementsByName('duetime');
     var inputForm = document.querySelector('form');
-    console.log();
+
     var previousDescription 
     for (var i=0; i < updateButton.length; i++) {
         updateButton[i].addEventListener('click', function(e){
