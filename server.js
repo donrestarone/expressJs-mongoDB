@@ -49,7 +49,7 @@ app.post('/todos', (req, res) => {
     });
 });
 
-app.put('https://teux-deux.herokuapp.com/todos', (req, res) => {
+app.put('/todos', (req, res) => {
     var description = req.body.description;
     var newDescription = req.body.newDescription
     console.log(req.body.description)
@@ -72,7 +72,7 @@ app.put('https://teux-deux.herokuapp.com/todos', (req, res) => {
 
 });
 
-app.delete('https://teux-deux.herokuapp.com/todos', (req, res) => {
+app.delete('/todos', (req, res) => {
     db.collection('todos').findOneAndDelete({description: req.body.description});
     res.redirect('/');
 });
