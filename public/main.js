@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function(){
             var ul = targetElement.parentElement.children
             previousDescription = ul[0].innerText
             console.log(previousDescription)
-            fetch('http://teux-deux.herokuapp.com/todos', {
+            fetch('https://teux-deux.herokuapp.com/todos', {
                 method: 'delete',
                 headers: {'content-Type': 'application/json'},
                 body: JSON.stringify({
