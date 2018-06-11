@@ -20,7 +20,22 @@ document.addEventListener("DOMContentLoaded", function(){
     }
     for(var i=0; i < deleteButton.length; i++) {
         deleteButton[i].addEventListener('click', function(e){
-            console.log()
+            var targetElement = event.target || event.srcElement;
+            var ul = targetElement.parentElement.children
+            previousDescription = ul[0].innerText
+            console.log(previousDescription)
+            fetch('/todos', {
+                method: 'delete',
+                headers: {'content-Type': 'application/json'},
+                body: JSON.stringify({
+                    'description': previousDescription,
+                })
+            }).then(res => {
+                if (res.ok) return res.json();
+            }).then(data => {
+                console.log(data)
+            });
+            location.reload();
         });
     }
 
@@ -46,17 +61,11 @@ document.addEventListener("DOMContentLoaded", function(){
                 if (res.ok) return res.json();
             }).then(data => {
                 console.log(data)
-            })
+            });
             
             
         }   
     });
-
-
-    // inputForm.submit(function(e){
-    //     return false
-    // });
-    
 })
     
 
