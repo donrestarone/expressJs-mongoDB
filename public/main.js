@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function(){
             var ul = targetElement.parentElement.children
             previousDescription = ul[0].innerText
             console.log(previousDescription)
-            fetch('/todos', {
+            fetch('https://teux-deux.herokuapp.com/todos', {
                 method: 'delete',
                 headers: {'content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function(){
             var newDescription = textField.value;
             // var dataObject  = {'description': previousDescription, 'newDescription': newDescription, 'duetime': dueTime.value}
             
-            fetch('/todos', {
+            fetch('https://teux-deux.herokuapp.com/todos', {
                 method: 'put',
                 headers: {'content-Type': 'application/json'},
                 body: JSON.stringify({
