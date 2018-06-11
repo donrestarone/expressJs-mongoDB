@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(){
     var inputForm = document.querySelector('form');
     console.log();
     var previousDescription 
-    for(var i=0; i < updateButton.length; i++) {
+    for (var i=0; i < updateButton.length; i++) {
         updateButton[i].addEventListener('click', function(e){
             submitButton.innerText = 'update';
             submitButton.classList.add('update');
@@ -17,14 +17,12 @@ document.addEventListener("DOMContentLoaded", function(){
             previousDescription = ul[0].innerText
             textField.value = previousDescription
         });
-    }
-    for(var i=0; i < deleteButton.length; i++) {
         deleteButton[i].addEventListener('click', function(e){
             var targetElement = event.target || event.srcElement;
             var ul = targetElement.parentElement.children
             previousDescription = ul[0].innerText
             console.log(previousDescription)
-            fetch('https://teux-deux.herokuapp.com/todos', {
+            fetch('/todos', {
                 method: 'delete',
                 headers: {'content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -38,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function(){
             location.reload();
         });
     }
-
     
     submitButton.addEventListener('click', function(e){
         if (submitButton.className === 'update') {
@@ -49,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function(){
             var newDescription = textField.value;
             // var dataObject  = {'description': previousDescription, 'newDescription': newDescription, 'duetime': dueTime.value}
             
-            fetch('https://teux-deux.herokuapp.com/todos', {
+            fetch('/todos', {
                 method: 'put',
                 headers: {'content-Type': 'application/json'},
                 body: JSON.stringify({
