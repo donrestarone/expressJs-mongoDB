@@ -28,7 +28,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 // root path, will be using newer ES6 syntax after this.
-app.get('/', function(req, res) {
+app.get('https://teux-deux.herokuapp.com/todos', function(req, res) {
     // get the collection of 'todos' from mongolab, disregard the irrelevant stuff and return the todos in an array
     var cursor = db.collection('todos').find().toArray(function(err, result){
         // render the template in the views folder, pass result from the array function to the view to be rendered as todos
@@ -40,7 +40,7 @@ app.get('/', function(req, res) {
     // res.sendFile(__dirname + '/index.html')
 });
 
-app.post('/todos', (req, res) => {
+app.post('https://teux-deux.herokuapp.com/todos', (req, res) => {
     db.collection('todos').save(req.body, (err, result) => {
         if (err) return console.log(err);
         console.log('saved to database');
@@ -49,7 +49,7 @@ app.post('/todos', (req, res) => {
     });
 });
 
-app.put('/todos', (req, res) => {
+app.put('https://teux-deux.herokuapp.com/todos', (req, res) => {
     var description = req.body.description;
     var newDescription = req.body.newDescription
     console.log(req.body.description)
@@ -72,7 +72,7 @@ app.put('/todos', (req, res) => {
 
 });
 
-app.delete('/todos', (req, res) => {
+app.delete('https://teux-deux.herokuapp.com/todos', (req, res) => {
     db.collection('todos').findOneAndDelete({description: req.body.description});
     res.redirect('/');
 });
