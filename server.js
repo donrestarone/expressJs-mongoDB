@@ -76,6 +76,6 @@ app.delete('/todos', (req, res) => {
     console.log('got delete request');
     db.collection('todos').findOneAndDelete({description: req.body.description});
     console.log('processed delete request');
-    res.redirect('/');
+
 });
 
